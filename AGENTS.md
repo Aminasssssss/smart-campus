@@ -1,10 +1,13 @@
 ## Project
-Smart Campus room availability checker; fictional data only (rooms A-101, B-202 blocked, C-303). React, TypeScript, Vite.
+Smart Campus room availability checker; fictional data only (rooms A-101, B-202 blocked, C-303, D-404). React, TypeScript, Vite.
 
 ## Structure
 src/lib/availability.ts: pure booking rule checkAvailability.
+src/lib/roomFilter.ts: pure room filtering (capacity + equipment).
 src/App.tsx: UI.
-src/data/rooms.ts: fixture data.
+src/data/rooms.ts: fixture data (four rooms with capacity and equipment).
+src/lib/roomFilter.test.ts: room filter tests.
+src/lib/roomCatalog.test.ts: catalog integrity tests.
 src/lib/*.test.ts: Vitest tests.
 
 ## Constraints
