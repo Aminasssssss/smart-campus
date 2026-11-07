@@ -9,6 +9,8 @@ function freeRoom(): Room {
   return {
     id: 'a-101',
     name: 'A-101',
+    capacity: 30,
+    equipment: ['projector', 'whiteboard'],
     blocked: false,
     bookings: [
       { start: 900, end: 960 },
@@ -18,7 +20,7 @@ function freeRoom(): Room {
 }
 
 function blockedRoom(): Room {
-  return { id: 'b-202', name: 'B-202', blocked: true, bookings: [] };
+  return { id: 'b-202', name: 'B-202', capacity: 20, equipment: ['projector'], blocked: true, bookings: [] };
 }
 
 function check(room: Room, start: number, end: number, now = NOW) {

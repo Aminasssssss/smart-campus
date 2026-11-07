@@ -5,7 +5,7 @@ import type { Room } from '@/data/rooms';
 
 const NOW = 540;
 function freeRoom(): Room {
-  return { id: 'a-101', name: 'A-101', blocked: false, bookings: [ { start: 900, end: 960 }, { start: 600, end: 660 } ] };
+  return { id: 'a-101', name: 'A-101', capacity: 30, equipment: ['projector', 'whiteboard'], blocked: false, bookings: [ { start: 900, end: 960 }, { start: 600, end: 660 } ] };
 }
 function check(room: Room, start: number, end: number, now = NOW) {
   return checkAvailability({ room, now, start, end }).available;
@@ -31,6 +31,8 @@ describe('Regression: strict overlap boundaries and no input mutation', () => {
     const room: Room = {
       id: 'c-303',
       name: 'C-303',
+      capacity: 12,
+      equipment: ['whiteboard'],
       blocked: false,
       bookings: [
         { start: 720, end: 780 },
