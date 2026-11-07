@@ -29,3 +29,19 @@ export function filterRooms(
       matchesEquipment(room, filter.requiredEquipment)
   );
 }
+
+// Equipment options derived from the catalog, in first-seen order.
+// Moved here from App.tsx so the derivation lives next to the filter it feeds.
+export function equipmentOptions(catalog: Room[]): string[] {
+  const seen = new Set<string>();
+  const list: string[] = [];
+  for (const room of catalog) {
+    for (const item of room.equipment) {
+      if (!seen.has(item)) {
+        seen.add(item);
+        list.push(item);
+      }
+    }
+  }
+  return list;
+}
