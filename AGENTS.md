@@ -19,6 +19,8 @@ Prefer pure functions and minimal changes; use at most 2 justified patterns.
 Do not mutate booking fixtures; keep responsive UI feedback.
 Do not change UI text or layout.
 
+Dev-only test dependencies: @testing-library/react, jsdom.
+
 ## Commands
 npm test
 npm run typecheck
