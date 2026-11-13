@@ -55,4 +55,26 @@ describe('App UI integration', () => {
       )
     ).toBeDefined();
   });
+
+  it('F5: moves to A-101 and re-checks when C-303 is filtered out', async () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /C-303/ }));
+    fireEvent.change(screen.getByDisplayValue('700'), {
+      target: { value: '600' },
+    });
+    fireEvent.change(screen.getByDisplayValue('760'), {
+      target: { value: '660' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Check availability' }));
+    expect(await screen.findByText('Available')).toBeDefined();
+    fireEvent.change(screen.getByDisplayValue('1'), {
+      target: { value: '25' },
+    });
+    expect(screen.queryByText('C-303')).toBeNull();
+    expect(await screen.findByText('Unavailable')).toBeDefined();
+    expect(screen.getByText('Existing bookings for A-101')).toBeDefined();
+    expect(
+      screen.getByText('Overlaps with an existing booking from 600 to 660.')
+    ).toBeDefined();
+  });
 });

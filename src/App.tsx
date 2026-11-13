@@ -89,6 +89,7 @@ export default function App() {
     if (result && selectedRoom) {
       runCheckFor(selectedRoom);
     }
+    // Only the selected room's id triggers a re-check; time edits clear the result instead.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRoom?.id]);
 
